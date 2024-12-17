@@ -1,5 +1,5 @@
 import React from "react";
-
+import { AiFillDelete, AiFillSignature } from "react-icons/ai"; // Import icons
 
 const Create = ({
   saveTitleToState,
@@ -11,27 +11,33 @@ const Create = ({
 }) => {
   return (
     <>
-      <h1 className="text-secondary text-center">Create a new post</h1>
+      <h1 className="text-secondary text-center">Create a New Post</h1>
       <table className="w-50 mx-auto">
         <input
           className="form-control mb-3"
           ref={getTitle}
           onChange={saveTitleToState}
           type="text"
-          placeholder="title"
+          placeholder="Title"
         />
         <textarea
           className="form-control mb-3"
           onChange={saveContentToState}
-          placeholder="Context"
+          placeholder="Content"
           ref={getContent}
         ></textarea>
-        <button className="btn bg-primary" onClick={savePost}> 
-          Create
-        </button>
-        <button onClick={cancleCreate} className="btn bg-danger ms-5">
-          Cancle
-        </button>
+
+        {/* Buttons */}
+        <div className="d-flex justify-content-center">
+          <button className="btn bg-primary text-white me-3" onClick={savePost}>
+            <AiFillSignature className="me-2" />
+            Create
+          </button>
+          <button onClick={cancleCreate} className="btn bg-danger text-white">
+            <AiFillDelete className="me-2" />
+            Cancel
+          </button>
+        </div>
       </table>
     </>
   );

@@ -61,10 +61,18 @@ const List = () => {
   }
 
   const deletePost = (id) => {
-    const modifiedPosts = posts.filter((eachPost) => {
-      return eachPost.id !== id;
-    });
-    setPosts(modifiedPosts);
+    // Show confirmation dialog
+    const isConfirmed = window.confirm(
+      "Are you sure you want to delete this post?"
+    );
+
+    // Proceed only if the user clicks 'OK'
+    if (isConfirmed) {
+      const modifiedPosts = posts.filter((eachPost) => {
+        return eachPost.id !== id;
+      });
+      setPosts(modifiedPosts);
+    }
   };
 
   function cancleCreate(e) {
@@ -119,27 +127,42 @@ const List = () => {
   } else {
     return (
       <>
-        <h1>All setup</h1>
+        
+        <h1>All Posts</h1>
         {!posts.length ? (
           <div>
             <h3 className="text-danger py-3">There is nothing to see here!</h3>
           </div>
         ) : (
-          posts.map((post) => {
-            return (
-              <Post
-                key={post.id}
-                id={post.id}
-                title={post.title}
-                content={post.content}
-                editPost={editPost}
-                deletePost={deletePost}
-              />
-            );
-          })
+          <table className="mx-auto table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Content</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {posts.map((post) => {
+                return (
+                  <Post
+                    key={post.id}
+                    id={post.id}
+                    title={post.title}
+                    content={post.content}
+                    editPost={editPost}
+                    deletePost={deletePost}
+                  />
+                );
+              })}
+            </tbody>
+          </table>
         )}
 
-        <button onClick={toggleCreate}>Create new post</button>
+        <button className="btn btn-primary" onClick={toggleCreate}>
+          Create New Post
+        </button>
       </>
     );
   }

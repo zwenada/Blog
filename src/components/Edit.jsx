@@ -1,6 +1,14 @@
 import React from "react";
-
-const Edit = ({ id, title, content, updated, saveContentToState, saveTitleToState, cancleEdit }) => {
+import { AiFillDelete, AiFillSignature } from "react-icons/ai"; // Import icons
+const Edit = ({
+  id,
+  title,
+  content,
+  updated,
+  saveContentToState,
+  saveTitleToState,
+  cancleEdit,
+}) => {
   return (
     <>
       <h1 className="text-secondary text-center">Edit post</h1>
@@ -18,10 +26,14 @@ const Edit = ({ id, title, content, updated, saveContentToState, saveTitleToStat
           defaultValue={content}
           onChange={saveContentToState}
         ></textarea>
-        <button onClick={updated} className="btn bg-primary " >
+        <button onClick={updated} className="btn bg-primary ">
+        <AiFillSignature className="me-2" />
           Edit
         </button>
-        <button onClick={cancleEdit} className="btn bg-danger ms-5">Cancle</button>
+        <button onClick={cancleEdit} className="btn bg-danger ms-5">
+        <AiFillDelete className="me-2" />
+          Cancle
+        </button>
       </form>
     </>
   );
