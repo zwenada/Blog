@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { AiOutlinePlusCircle } from "react-icons/ai";
 import Create from "./Create";
 import Post from "./Post";
 import Edit from "./Edit";
@@ -127,7 +128,6 @@ const List = () => {
   } else {
     return (
       <>
-        
         <h1>All Posts</h1>
         {!posts.length ? (
           <div>
@@ -161,6 +161,7 @@ const List = () => {
         )}
 
         <button className="btn btn-primary" onClick={toggleCreate}>
+          <AiOutlinePlusCircle className="me-2" />
           Create New Post
         </button>
       </>

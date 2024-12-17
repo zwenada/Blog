@@ -7,18 +7,11 @@ const Post = ({ id, title, content, editPost, deletePost }) => {
         <td>{title}</td>
         <td>{content}</td>
         <td>
-          <button
-            onClick={() => editPost(id)}
-            className="btn btn-primary mx-3 my-3"
-          ><AiFillSignature className="me-2" />
-            Edit
+          <button onClick={() => editPost(id)} className="btn btn-primary me-2">
+            <AiFillSignature />
           </button>
-          <button
-            onClick={() => deletePost(id)}
-            className="btn btn-danger mx-2 my-3"
-          >
-            <AiFillDelete className="me-2" />
-            Delete
+          <button onClick={() => deletePost(id)} className="btn btn-danger">
+            <AiFillDelete />
           </button>
         </td>
       </tr>
